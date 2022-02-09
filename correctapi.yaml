@@ -1,0 +1,619 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: ECE 461 - Fall 2021 - Project 2
+  description: 'API for ECE 461/Fall 2021/Project 2: A Trustworthy Module Registry'
+  contact:
+    email: davisjam@purdue.edu
+    name: Prof. Davis
+    url: http://davisjam.github.io
+host: purde-final-project.appspot.com
+basePath: /
+securityDefinitions: {}
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  "/user":
+    post:
+      description: Make a new User.
+      summary: NewUser
+      operationId: NewUser
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: X-Authorization
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: false
+        enum:
+        - application/json
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/NUser'
+      responses:
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          headers: {}
+        '200':
+          description: User Made!
+          headers:
+            offset:
+              type: string
+  "/packages":
+    post:
+      description: Get any packages fitting the query.
+      summary: PackagesList
+      operationId: PackagesList
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: X-Authorization
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: offset
+        in: query
+        required: false
+        type: string
+        description: Provide this for pagination. If not provided, returns the first page of results.
+      responses:
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          headers: {}
+        '200':
+          description: List of packages
+          schema:
+            type: array
+            default: ''
+            items:
+              $ref: '#/definitions/PackageMetadata'
+          headers:
+            offset:
+              type: string
+  "/reset":
+    delete:
+      description: Reset registry
+      summary: RegistryReset
+      operationId: RegistryReset
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: X-Authorization
+        in: header
+        required: false
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: Registry is reset.
+          headers: {}
+        '401':
+          description: You do not have permission to reset the registry.
+          headers: {}
+  /package/{id}:
+    get:
+      description: Return this package.
+      summary: PackageRetrieve
+      operationId: PackageRetrieve
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: X-Authorization
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ID of package to fetch
+      responses:
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          headers: {}
+        '200':
+          description: pet response
+          schema:
+            $ref: '#/definitions/Package'
+          headers: {}
+    put:
+      description: >-
+        The name, version, and ID must match.
+
+
+        The package contents (from PackageData) will replace the previous contents.
+      summary: PackageUpdate
+      operationId: PackageUpdate
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: X-Authorization
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: false
+        enum:
+        - application/json
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Package'
+      responses:
+        '200':
+          description: Success.
+          headers: {}
+        '400':
+          description: Malformed request (e.g. no such package).
+          headers: {}
+    delete:
+      description: Delete this version of the package.
+      summary: PackageDelete
+      operationId: PackageDelete
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: X-Authorization
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: Package ID
+      responses:
+        '200':
+          description: Package is deleted.
+          headers: {}
+        '400':
+          description: No such package.
+          headers: {}
+  /package:
+    post:
+      description: The "ID" field in the request body allows the user to use their own ID scheme. If this ID is already in use, the system chooses a new ID and indicates this in the response body.
+      summary: PackageCreate
+      operationId: PackageCreate
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: X-Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: false
+        enum:
+        - application/json
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Package'
+      responses:
+        '201':
+          description: Success. Check the ID in the returned metadata for the official ID.
+          schema:
+            $ref: '#/definitions/PackageMetadata'
+          headers: {}
+        '403':
+          description: Package exists already.
+          headers: {}
+        '400':
+          description: Malformed request.
+          headers: {}
+  /package/{id}/rate:
+    get:
+      description: Get the rating for this package.
+      summary: PackageRate
+      operationId: PackageRate
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: X-Authorization
+        in: header
+        required: false
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: Rating. Only use this if each metric was computed successfully.
+          schema:
+            $ref: '#/definitions/PackageRating'
+          headers: {}
+        '400':
+          description: No such package.
+          headers: {}
+        '500':
+          description: The package rating system choked on at least one of the metrics.
+          headers: {}
+  /authenticate:
+    put:
+      description: >-
+        If your system supports the authentication scheme described in the spec, then:
+
+
+        1. The obtained token should be provided to the other endpoints via the "X-Authorization" header.
+
+        2. The "Authorization" header is *required* in your system.
+
+
+        Otherwise, this endpoint should return HTTP 501 "Not implemented", and the "X-Authorization" header should be unused for the other endpoints.
+      summary: CreateAuthToken
+      operationId: CreateAuthToken
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        enum:
+        - application/json
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/AuthenticationRequest'
+      responses:
+        '200':
+          description: Success.
+          schema:
+            type: string
+            default: ''
+          headers: {}
+        '401':
+          description: Authentication failed (e.g. no such user or invalid password)
+          headers: {}
+        '501':
+          description: This system does not support authentication.
+          headers: {}
+  /package/byName/{name}:
+    get:
+      description: Return the history of this package (all versions).
+      summary: PackageByNameGet
+      operationId: PackageByNameGet
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: name
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: X-Authorization
+        in: header
+        required: false
+        type: string
+        description: ''
+      responses:
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          headers: {}
+        '200':
+          description: Package history
+          schema:
+            type: array
+            default: ''
+            items:
+              $ref: '#/definitions/PackageHistoryEntry'
+          headers: {}
+        '400':
+          description: No such package.
+          headers: {}
+    delete:
+      description: Delete all versions of this package.
+      summary: PackageByNameDelete
+      operationId: PackageByNameDelete
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: X-Authorization
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: name
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: Package is deleted.
+          headers: {}
+        '400':
+          description: No such package.
+          headers: {}
+definitions:
+  Error:
+    title: Error
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+    required:
+    - code
+    - message
+  NUser:
+    title: User
+    type: object
+    properties:
+      metadata:
+        $ref: '#/definitions/UserMetadata'
+    required:
+    - metadata
+  Package:
+    title: Package
+    type: object
+    properties:
+      metadata:
+        $ref: '#/definitions/PackageMetadata'
+      data:
+        $ref: '#/definitions/PackageData'
+    required:
+    - metadata
+    - data
+  PackageMetadata:
+    title: PackageMetadata
+    description: >-
+      The "Name" and "Version" are used as a unique identifier pair when uploading a package.
+
+
+      The "ID" is used as an internal identifier for interacting with existing packages.
+    type: object
+    properties:
+      Name:
+        description: >-
+          Name of a package.
+
+
+          - Names should only use typical "keyboard" characters.
+
+          - The name "*" is reserved. See the `/packages` API for its meaning.
+        type: string
+      Version:
+        description: Package version
+        example: 1.2.3
+        type: string
+      ID:
+        type: string
+    required:
+    - Name
+    - Version
+    - ID
+  UserMetadata:
+    title: UserMetadata
+    description: >-
+      The "Name" and "Password" are the login details to obtain auth-tokens.
+    type: object
+    properties:
+      Name:
+        description: >-
+          Name of a User.
+          - Names should only use typical "keyboard" characters.
+        type: string
+      Password:
+        type: string
+    required:
+    - Name
+    - Password
+  PackageData:
+    title: PackageData
+    description: >-
+      This is a "union" type.
+
+      - On package upload, either Content or URL should be set.
+
+      - On package update, exactly one field should be set.
+
+      - On download, the Content field should be set.
+    type: object
+    properties:
+      Content:
+        description: >-
+          Package contents. This is the zip file uploaded by the user. (Encoded as text using a Base64 encoding).
+
+
+          This will be a zipped version of an npm package's GitHub repository, minus the ".git/" directory." It will, for example, include the "package.json" file that can be used to retrieve the project homepage.
+
+
+          See https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage.
+        type: string
+      URL:
+        description: Package URL (for use in public ingest).
+        type: string
+      JSProgram:
+        description: A JavaScript program (for use with sensitive modules).
+        type: string
+  User:
+    title: User
+    type: object
+    properties:
+      name:
+        example: Alfalfa
+        type: string
+      isAdmin:
+        description: Is this user an admin?
+        type: boolean
+    required:
+    - name
+    - isAdmin
+  UserAuthenticationInfo:
+    title: UserAuthenticationInfo
+    description: Authentication info for a user
+    type: object
+    properties:
+      password:
+        description: Password for a user. Per the spec, this should be a "strong" password.
+        type: string
+    required:
+    - password
+  PackageRating:
+    title: PackageRating
+    description: >-
+      Package rating (cf. Project 1).
+
+
+      If the Project 1 that you inherited does not support one or more of the original properties, denote this with the value "-1".
+    type: object
+    properties:
+      BusFactor:
+        type: number
+        format: double
+      Correctness:
+        type: number
+        format: double
+      RampUp:
+        type: number
+        format: double
+      ResponsiveMaintainer:
+        type: number
+        format: double
+      LicenseScore:
+        type: number
+        format: double
+      GoodPinningPractice:
+        description: The fraction of its dependencies that are pinned to at least a specific major+minor version, e.g. version 2.3.X of a package. (If there are zero dependencies, they should receive a 1.0 rating. If there are two dependencies, one pinned to this degree, then they should receive a ½ = 0.5 rating).
+        type: number
+        format: double
+    required:
+    - BusFactor
+    - Correctness
+    - RampUp
+    - ResponsiveMaintainer
+    - LicenseScore
+    - GoodPinningPractice
+  PackageHistoryEntry:
+    title: PackageHistoryEntry
+    description: One entry of the history of this package.
+    type: object
+    properties:
+      User:
+        $ref: '#/definitions/User'
+      Date:
+        description: Date of activity.
+        type: string
+        format: date-time
+      PackageMetadata:
+        $ref: '#/definitions/PackageMetadata'
+      Action:
+        $ref: '#/definitions/Action'
+    required:
+    - User
+    - Date
+    - PackageMetadata
+    - Action
+  AuthenticationRequest:
+    title: AuthenticationRequest
+    type: object
+    properties:
+      User:
+        $ref: '#/definitions/User'
+      Secret:
+        $ref: '#/definitions/UserAuthenticationInfo'
+    required:
+    - User
+    - Secret
+  PackageQuery:
+    title: PackageQuery
+    type: object
+    properties:
+      Version:
+        example: >-
+          Exact (1.2.3)
+
+          Bounded range (1.2.3-2.1.0)
+
+          Carat (^1.2.3)
+
+          Tilde (~1.2.0)
+        type: string
+      Name:
+        description: >-
+          Name of a package.
+
+
+          - Names should only use typical "keyboard" characters.
+
+          - The name "*" is reserved. See the `/packages` API for its meaning.
+        type: string
+    required:
+    - Name
+  Action:
+    title: Action
+    example: CREATE
+    type: string
+    enum:
+    - CREATE
+    - UPDATE
+    - DOWNLOAD
+    - RATE
+tags: []

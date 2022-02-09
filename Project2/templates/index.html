@@ -1,0 +1,107 @@
+<html lang="en">
+
+    <header>
+        <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+          <link type="text/css" rel="stylesheet" href="/static/index.css" />
+
+    </header>
+
+    <title>NPM-Registry Group 19</title>
+<main>
+        <div class="parent">
+
+    <div class="flash-messages" id="flashed">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <h1>{{ message }}</h1>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+            <div class="navbar-container">
+                <div class="navbar-wrapper">
+                    <ul class="nav">
+                        <li class="nav-item"> 
+                        
+                                <a class="nav-link" href="/home"> Home </a>
+                        
+                        </li>
+                        <li class="nav-item" style="border-right: none!important"> 
+                        
+                                <a class="nav-link" href="/about"> About </a>
+                        
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="height: 50px"> </div>
+        
+            <div class="container-below">
+                <div class="wrapper-below">       
+
+                    <ul class="list-wrapper">
+                                            
+                        <li class="list-items">
+                            <div class="text-content">
+
+                            <p style="text-align: left; font-size:2.3rem;">Upload</p>
+                        <form method="POST" action="{{ url_for('upload') }}" enctype = "multipart/form-data">
+                            <div class="form-items" style="height: 25px">
+                            
+                            <label for="name_input">Name: </label> 
+                                <input class="i" type="text" name="name" id="name_input" accept=".zip,.rar,.7zip">
+                            <label for="version_input">Version: </label> 
+                                <input style="width: 70px;" class="i" name="version" type="text" id="version_input" accept=".zip,.rar,.7zip">
+                            <label for="zip_file">Zip: </label> 
+                                <input type="file" name="file" id="zip_file" accept=".zip,.rar,.7zip">
+                                                                         
+                            <input type = "submit"/>
+
+                            </div>
+                        </form>
+                        
+                                <p> Upload a Package in Zip Format. </p>
+                                <p> </p>
+                            </div>
+                        </li>
+                    
+                        <li class="list-items">
+                            <div class="text-content">
+                            
+                                <p class="a-link">View</p>
+                                <p> View a paginated registry. </p>
+                                <p><a href="/view" class="links">Look inside.</a></p>
+                            </div>
+                        </li>
+                        
+                        <li class="list-items">
+                            <div class="text-content">
+                            
+                                <p class="a-link">Sign Up</p>
+                                <p> Sign up a User to obtain API-Tokens. </p>
+                                <p><a href="#" class="links">Look inside.</a></p>
+                            </div>
+                        </li>    
+                        
+                        <li class="list-items">
+                            <div class="text-content">
+                            
+                                <p class="a-link">Endpoints</p>
+                                <p> View available endpoints for RESTful interactions. </p>
+                                <p><a href="/ui1" class="links">Look inside.</a></p>
+                            </div>
+                        </li>                     
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+</main>
+        
+<script type="text/javascript">window.setTimeout("document.getElementById('flashed').style.display='none';", 4500); </script>
+
+        
+
+</html>

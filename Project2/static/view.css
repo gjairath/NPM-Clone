@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+}
+.root {
+    --primary-text: #FFFFFF;
+    --secondary-text: #B3B3B3;
+    -bl: #18191A;
+    --secondary-bl: #181818;
+}
+                                    /* The top banner stuff */
+.top-banner {
+    height: 8vh;
+    display: flex;    
+    border-bottom: 2px solid #D2D2D2;
+}
+
+.dark-mode-item-one{
+    height: 100%;
+    width: 200px;
+    display: flex;
+    
+    justify-content: center;
+}
+
+.content-light-btn{
+    height: 30px;
+    
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    
+    color: black;
+}
+.card{
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    width: 275px;
+    max-width: 275px;
+
+    
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+
+    margin-bottom: 25px;
+}
+
+.content-title{
+    overflow:hidden;
+    max-width: 16ch;
+    max-height: 50px;
+}
+
+
+.light-mode-btn{
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+    margin-top: 3px !important;  
+}
+                        
+#container-below{
+    z-index: 15;
+    
+    width: 100%;
+    
+    display: inline-block;
+    
+}
+
+                                        
+#card-grid{
+    height: calc(100vh - 8vh);    
+    z-index: 1;
+    position: relative;
+    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px;
+    
+    margin-top: 50px;    
+    margin-left: 50px;
+
+}

@@ -1,0 +1,95 @@
+html, #root, .App, .parent {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+	font-family: "Denso Var", sans-serif;
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+main{
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+.parent{
+    height: 100%;
+    width: 100%;
+}
+.title{
+    width: 500px;
+}
+
+h1, h2{
+    font-weight: normal;
+}
+
+.border-text{
+    padding-bottom  : 5px;
+}
+
+
+.content-bullets{
+    height: 100%;
+    width: 100%;
+        display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.content-item{
+    width: 60%;
+    height: 10%;
+    margin-bottom: 35px;
+}
+
+.content-item1{
+    width: 60%;
+    height: 10%;
+}
+
+.content-item1 > h2{
+    margin-bottom: 10px !important;
+}
+
+
+.content-sub{
+    margin-left: 5px;
+}
+
+.a_link{
+    text-decoration: none;
+}
+.border{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.styled-table {
+    border-collapse: collapse;
+    font-size: 0.9em;
+
+    min-width: 400px;
+    width: 100%;
+}
+
+.styled-table thead tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.32);
+    color: rgba(0, 0, 0, 0.57);
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+    padding: 12px 15px;
+}

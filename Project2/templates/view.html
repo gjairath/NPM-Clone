@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+		<title>View NPM-Registry</title>
+
+<head>
+</head>
+
+<body>
+
+    <div class="top-banner" id="top-banner">
+    
+        <div class="dark-mode-item-one">
+                <a href="/home" style="text-decoration: none;" class="light-mode-btn" >         
+                    <div class="content-light-btn" style="padding-top: 8px">
+                    Home
+                    </div>
+                    
+                </a>
+
+        </div>
+    
+        <div class="dark-mode-item-one">
+                <a href="/about" style="text-decoration: none;" class="light-mode-btn" >         
+                    <div class="content-light-btn" style="padding-top: 8px">
+                    About
+                    </div>
+                    
+                </a>
+
+        </div>
+        
+        <div class="dark-mode-item-one" style="margin-left: auto">
+                <button class="light-mode-btn" >         
+                    <div class="content-light-btn">
+                    NPM-Registry
+                    </div>
+                    
+                </button>
+
+        </div>    </div>
+        <main>
+<!-- body below -->
+    <div id="container-below">
+
+            <div id="card-grid">
+
+    {% for name, id, size  in result %}
+        <div class="card">
+            <div class="content-card">
+            <div class="content-title">
+                {{name | truncate(16, True, '')}}
+            </div>
+            <div style="height: 15px;"> </div>
+            <div class="content-id">
+                ID: {{id}}
+            </div>
+            <div style="height: 15px;"> </div>
+            <div class="content-size">
+                {{size}} Bytes
+            </div>
+            </div>
+          </div>
+    {%endfor%}  
+    </div>
+        </main>
+</body>
+  
+<link rel="stylesheet" href="{{ url_for('static', filename='view.css') }}">
+
+</html>

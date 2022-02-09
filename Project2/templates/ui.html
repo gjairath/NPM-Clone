@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+		<title>View NPM-Registry</title>
+
+<head>
+</head>
+
+<body>
+
+
+    <main>
+        <div class="parent">
+        <section class="content-bullets">
+            <div class="content-item">
+                <h1>
+                ECE 461 - Fall 2021 - Project 2
+                </h1>
+                
+                <div class="border-text">
+                <span> A Reference Document. </span>
+                </div>
+                <div class="border-text border">
+                    <a href="/home" class="a_link"> Go Home </a> 
+                </div>
+            </div>                
+            <div style="height: 25px;"> </div>
+            <div class="content-item">
+                    <h2>
+                    Note
+                    </h2>
+                    <div class="content-sub">
+                    All the endpoints are taken from the Spec provided by the ECE-461 Staff.
+                    </div>
+                </div>
+
+                <div class="content-item">
+                    <h2>
+                    Resource Types
+                    </h2>
+                    <div class="content-sub">
+                    URIs are relative to https://purde-final-project.appspot.com/
+                    </div>
+                </div>
+                
+                <div class="content-item1">
+                    <h2>
+                    Quick Glance
+                    </h2>
+                    <div class="content-sub">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Endpoint</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            <tr>
+                                <td>POST</td>
+                                <td>/package</td>
+                                <td> Create a new package.</td>
+                            </tr>
+                                
+                        
+                            <tr>
+                                <td>DELETE</td>
+                                <td>/package/byName/{name}</td>
+                                <td>Delete all versions of this package.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>GET</td>
+                                <td>/package/byName/{name}</td>
+                                <td> Return the history of this package (all versions).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>DELETE</td>
+                                <td>/package/{id}</td>
+                                <td>Delete this versions of the package.</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>GET</td>
+                                <td>/package/{id}</td>
+                                <td>Return this package.</td>
+                            </tr>                    
+                            <tr>
+                                <td>PUT</td>
+                                <td>/package/{id}</td>
+                                <td>Update this version of the package.</td>
+                            </tr> 
+                            <tr>
+                                <td>GET</td>
+                                <td>/package/{id}/rate</td>
+                                <td>Get the rating for this package.</td>
+                            </tr> 
+                            <tr>
+                                <td>POST</td>
+                                <td>/packages</td>
+                                <td>Get packages.</td>
+                            </tr> 
+                             <tr>
+                                <td>DELETE</td>
+                                <td>/reset</td>
+                                <td>Reset registry.</td>
+                            </tr> 
+                                                         <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr> 
+                                 
+                                 
+                             <tr>
+                                <td>POST</td>
+                                <td>/user</td>
+                                <td>Make a new user.</td>
+                            </tr> 
+                                                                                                                                                            
+                        </tbody>
+                    </table>
+                    </div>
+                    
+
+        <div style="height: 55px;"> </div>
+                    </div>
+          
+            </section>
+            
+        </div>        
+        
+        
+    </main>
+
+</body>
+
+<link type="text/css" rel="stylesheet" href="/static/ui.css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+</html>

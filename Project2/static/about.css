@@ -1,0 +1,164 @@
+html, #root, .App, .parent {
+  height: 100%;
+
+}
+body {
+font-family: "Denso Var", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.parent{
+    height: 100%;
+    width: 100%;
+}
+
+.container-below{
+    width: 100%;
+    height: 85%;
+    
+    justify-content: center;    
+    display: flex;
+}
+
+.wrapper-below{
+    font-family: "Denso Var", sans-serif;
+    display: flex;
+    align-items: center;
+    
+    height: 100%;
+    width: 69%; /* he he*/
+    
+    color: rgba(0,0,0,0.7);
+    flex-direction: column;
+}
+
+
+
+.a-link {
+    text-decoration: none;
+    font-size: 2.3rem;
+    color: rgba(0,0,0,0.7);
+
+}
+
+
+.a-link:hover{
+    color: -webkit-link;
+}
+
+
+.navbar-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+}
+
+.navbar-wrapper{
+
+    font-family: "Denso Var", sans-serif;
+    display: flex;
+    align-items: center;
+    
+    height: 15%;
+    width: 69%;
+    
+    padding-top: 2.5rem;
+    padding-bottom: 1.7rem;
+    justify-content: center;
+    color: rgba(0,0,0,0.6)!important;
+    
+    border-bottom: 0.093rem solid rgba(0,0,0,0.2);
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    
+}
+
+.nav-link {
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    cursor: pointer;
+}
+
+.nav-link:hover{
+    color: -webkit-link;
+
+}
+
+.nav-item{
+    padding-right: 25px;
+    font-size: 24px;
+    border-right: 0.093rem   solid rgba(0,0,0,0.2);
+}
+
+
+
+
+.listcontentwrapper{ /* the ul class */
+    list-style-type: none;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    
+    height: 100%;
+    
+    display: inline-block;
+}
+
+.list_items{ /* the li items */
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+        
+    padding: 30px;    
+}
+
+.text_wrapper{  /* the stuff on the left titel, desc, link */
+    height: 150px;
+    width: 100%;
+    
+    display: flex;
+    
+    padding-top: 25px;
+    padding-bottom: 25px;
+    
+    justify-content: center;
+}
+
+.a_link{
+    font-size: 20px;
+    padding: 50px;
+    text-decoration: none;
+}
+
+.a_link2{
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.a_link2:hover{
+    font-size: 17px;
+    transition: all 0.25s ease-in;
+}
+
+.content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    
+    font-size: 15px;
+    width: 403px;
+}
+
