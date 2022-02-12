@@ -5,7 +5,7 @@ This project is a NPM-registry with authentication.
 This project was made by me and another contributor. <br> For a detailed commit history check here: https://github.com/Purdue-ECE-461/project-2-project-2-19.
 
 # Link
-https://npm-clone-341104.uc.r.appspot.com/
+https://npm-clone-341104.uc.r.appspot.com/ <br> The app may be closed because I do not have that many kidneys to sell.
 
 # View
 <img src="npm-gifs/1.gif" height="350"/>
