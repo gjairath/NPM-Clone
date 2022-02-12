@@ -15,6 +15,6 @@ import os
 
 
 
-CLOUD_STORAGE_BUCKET = os.getenv('CLOUD_STORAGE_BUCKET')
+CLOUD_STORAGE_BUCKET="bucket_zip_uploads2"
 
 first_load = True

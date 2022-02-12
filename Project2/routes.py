@@ -57,7 +57,7 @@ def upload():
         import base64
         
         data = f.read()
-        requestUrl = "https://purde-final-project.appspot.com/package"
+        requestUrl = "https://npm-clone-341104.uc.r.appspot.com/package"
         
         encoded = base64.b64encode(data)
         s_encoded = str(encoded)[2:]
@@ -97,7 +97,7 @@ def about():
 def view():
     import requests
 
-    requestUrl = "https://purde-final-project.appspot.com/packages"
+    requestUrl = "https://npm-clone-341104.uc.r.appspot.com/packages"
     requestHeaders = {
       "Accept": "application/json"
     }
@@ -109,8 +109,8 @@ def view():
     size_array = []
     
     
-    print ("BELOW is repsonse..")
-    print (response.json())
+    #print ("BELOW is repsonse..")
+    #print (response.json())
     
     if (response.json() == ['No such page exists']):
         return render_template("view.html", result=zip(['Nothing here bud'], ['N/A'], ['0']))        

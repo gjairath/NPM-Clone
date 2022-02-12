@@ -11,7 +11,7 @@ flask_app = app.app
 PASSWORD=os.getenv("DB_PASS")
 PUBLIC_IP_ADDRESS =os.getenv("DB_IP")
 DBNAME ="projects_v2"
-PROJECT_ID ="purde-final-project"
+PROJECT_ID ="npm-clone-341104"
 INSTANCE_NAME ="project-db"
  
 # configuration

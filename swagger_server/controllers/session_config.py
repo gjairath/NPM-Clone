@@ -110,7 +110,7 @@ class Users(Base):
 # --------- Pool ---------
 def getconn() -> pymysql.connections.Connection:
     conn: pymysql.connections.Connection = connector.connect(
-        "purde-final-project:us-east1-d:project-db",
+        "npm-clone-341104:us-east1:project-db",
         "pymysql",
         user="root",
         password="CckioCDDqEwDL2kD",
@@ -129,7 +129,8 @@ def return_session():
     db = pool.connect()
     Session = sessionmaker(bind=pool)
     session = Session()
-
+    
+   # make_table()
     return session
 
 
@@ -158,5 +159,4 @@ def make_table():
     db = pool.connect()
     Session = sessionmaker(bind=pool)
     
-    Base.metadata.create_all(pool) 
-    
+    Base.metadata.create_all(pool)
