@@ -6,7 +6,7 @@ This project was made by me and another contributor. <br> For a detailed commit 
 <br> Mimics the NPM client with the use of RESTful interactions & a minimalistic front-end design. Deployed using Google Cloud Endpoints.
 
 # Link
-https://npm-clone-341104.uc.r.appspot.com/ <br> The app may be closed because I do not have that many kidneys to sell.
+https://npm-clone-341104.uc.r.appspot.com/ <br> <i> The app may be closed because I do not have that many kidneys to sell. </i>
 
 # View
 <img src="npm-gifs/1.gif" height="350"/>
